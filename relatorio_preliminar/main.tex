@@ -80,7 +80,7 @@
 %% used to denote shared contribution to the research.
 
 \author{Pedro Miguel Ferreira Tavares Carrega - 49480}
-\affiliation{%
+\affiliation{
  \institution{ Estudo Orientado em Engenharia Informática \\ Mestrado em Engenharia Informática \\ Faculdade de Ciências, Universidade de Lisboa}
  }
 \email{fc49480@alunos.fc.ul.pt}
@@ -93,15 +93,13 @@
 %% article.
 \begin{abstract}
   Este relatório foi desenvolvido com o propósito de descrever o ambito do tema de tese a ser entregue no fim deste ano lectivo e detalhar o trabalho até agora realizado. 
-
-  This paper was developed with the purpose to explain GPU (Graphical Processing Unit) programing and the improvements that can be made. To demonstrate this we used the Floyd-Warshall algorithm since it is highly demanding for the CPU (Central Processing Unit) due to the high number of computations required. During our research we discovered that the available materials for learning GPGPU (General Purpose Graphics Processing Unit) are quite difficult to understand for those who are looking to learn the basics of GPU programing. For that we developed this paper explaining from scratch GPGPU and some of the most significant improvements that can be made. We will start with a simple sequential solution of the algorithm in CUDA and from there go step by step till we use most of the tools and processing power that a GPU has to offer. This paper is helpful for someone who intends to learn the basics of GPGPU or could be used as a teaching guide in an IT course to introduce GPGPU to students.
 \end{abstract}
 
 
 %%
 %% Keywords. The author(s) should pick words that accurately describe
 %% the work being presented. Separate the keywords with commas.
-\keywords{ARTSOFT, ERP, OOP, C++}
+\keywords{ARTSOFT, ERP, OOP, C++, Segurança Social}
 
 
 %%
@@ -110,19 +108,6 @@
 \maketitle
 
 \section{Introduction}
-
-The purpose of this paper is to teach GPU (Graphics Processing Unit) programing and the different improvements that can be made, showing the different improvements in each version so that the solution can perform even better taking advantage of the GPU optimizations. To demonstrate this, we used a well known problem that is the Floyd-Warshall algorithm. The algorithm calculates all the possible paths between two points and saves the shortest path. It was chosen because it requires a enormous amount of computations to get the final result since it is has O$(n^{3})$ complexity. With a high amount of entries, that is, a big matrix and so it can be very demanding for the CPU (Central Processing Unit). This is where the GPU benefits due to its high number of threads.
-\newline
-For this paper all the examples will be in CUDA. %outras linguagens tem estas coisas?
-
-To make a method to be computed in the GPU you need to declare it with the "\_\_global\_\_" qualifier so that it will run on the GPU when called in the CPU. Each kernel runs a grid which is the group of blocks that are launched by the kernel, where each block is a set of threads. The grid can be represented as a one dimensional array, a two dimensional array or a three dimensional array. This can be used to improve the mapping of the work that each thread will do. 
-
-When launching a kernel it has to be declared the number of threads per block and the number of blocks that are going to be used. It should be taken into consideration the fact that blocks are composed of warps which are a set of 32 threads, so when declaring the number of blocks being used, it should be a multiple of 32 since all threads in a warp use the same program counter. Therefor if the number of threads in the blocks is not multiple of 32 there will be threads that are busy, waiting for the other threads in their warp that are actually doing some work.
-
-The composition of the kernel grid has a huge impact on performance, with that in mind a programmer of GPGPU (General Purpose Graphics Processing Unit), in most scenarios, should aim to use the largest amount of threads per block possible.
-
-It also needs to be considered that the GPU does not have access to the memory used by the CPU, so all pointers used as input for the GPU kernel will have to be allocated and copied to the GPU global memory before being able to access it. The pointers of the memory that were allocated need to be passed through the parameters of the kernel call so that they can be used by the GPU. In case of a primitive type, it can be passed only by the parameters of the kernel (i.e. int) and does not need to allocate memory on the GPU memory manually. After all the computations are finished, the result should be accessible by the CPU so that it can copy back the result. To do that it needs to copy the result similarly to the opposite operation but this time from the device to the host. Then the memory that was allocated in the GPU memory should be freed so there are no memory leaks just like in the CPU. In the next figure you can see an example of a input being copied to the GPU, the call of the kernel, the corresponding composition of the grid which will be represented in the (Fig.1) and then the result being copied back to the CPU memory:
-
 
 Here you should motivate your work. 
 
@@ -144,6 +129,14 @@ This section should contain any information needed to understand the problem you
 
 %ARTSOFT, TortoiseSVN (controlo de versoes), Visual Studio, Jenkins (compilar codigo na rede), POSTMAN
 
+\subsubsection{ARTSOFT}
+
+\subsubsection{TortoiseSVN}
+
+TortoiseSVN é um cliente open-source para a aplicação Apache Subversion oferecendo uma interface gráfica, um submenu de contexto no explorador do windows e acesso rápido a todos os comandos oferecidos pelo Subversion. Subversion é uma aplicação de controlo de versões que corre num servidor centralizado. Uma arquitetura centralizada oferece várias vantagens em comparação com uma arquitetura distribuída (i.e. Git): 
+
+\subsubsection{Jenkins}
+
 \subsection{Eventos}
 
 Um evento é um registo interno que é criado na aplicação ARTSOFT sempre que ocorra um acontecimento. Dentro da empresa ARTSOFT é utilizado para efetuar o registo de vários tipos de acontecimentos sendo os mais comuns os eventos de reporte de bug e eventos de roadmap. Roadmap são eventos que envolvem o desenvolvimento de funcionalidades para futuras versões do ARTSOFT. Eventos que reportam bugs no funcionamento da aplicação ARTSOFT, estes eventos podem ser criados devido a reportes internos ou por clientes da aplicação ARTSOFT. Um evento de bug ao ser criado é enviado para a entrada do Departamento de Programação (DRP), aí o mesmo é atribuído a um membro da equipa. O programador responsável pelo evento ao concluir o seu trabalho transfere o evento para a Unidade de Qualidade de Software (UQS). A equipa de testes vai testar o evento, confirmando se o mesmo se encontra resolvido. Caso o evento se encontre resolvido é assinalado como tal e é passado para a saída do DPR, senão o evento é passado de volta para o programador responsável pelo evento.
@@ -153,8 +146,6 @@ Um evento é um registo interno que é criado na aplicação ARTSOFT sempre que 
 Os primeiros três meses da minha tese foram dedicados à minha formação. O primeiro dia foi dedicado a ensinar-me os conceitos básicos do funcionamento da aplicação ARTSOFT, o funcionamento das ferramentas utilizadas para o controlo de versões e como funciona o fluxo de um evento. O restante da minha primeira semana foi dispendido a tratar de um evento de tipo roadmap, evento que foi criado somente com o propósito de formação, que me deu contacto com tudo que iria necessitar para efetuar desenvolvimento na aplicação ARTSOFT. O evento pedia a criação de uma interface que permitisse a visualização de entradas dado um de três tipos de entradas: Diário, Documento, Conta. Os três tipos de entradas requerem o número da entrada a consultar, sendo possível fornecer diferentes tipos consoante o tipo de entrada para filtrar os resultados. O diário é possível limitar ao mês que se pretende consultar enquanto que o documento é possível filtrar por tipo de documento. 
 
  Após a entrega desta nova funcionalidade foi me atribuído regularmente diferentes eventos até o prazo que se inicializou o desenvolvimento na nova versão do ARTSOFT.
-
-\subsection{Redação da Especificação de Requisitos}
 
 \section{Related Work} \label{sec:relatedwork}
 
@@ -167,7 +158,7 @@ Previous work with same data, similar work with other data, ... \\
 Problems tackled, data science approaches used, pros and cons, ... \\ 
 
 
-Example of a reference\cite{lamport1994}. This was a book, but all other relevant works in papers \cite{turing1937} could be added as well.
+Example of a reference\cite{subversion}.
 
 \section{Data \{if necessary\} } \label{sec:data}
 
@@ -187,7 +178,13 @@ What are the methods you are planning to use, or already started to use, to tack
 
 This should be based on related word, your understanding of the problem and eventually preliminary exploratory data analysis or preliminary results.
 
-\subsection{You decide on the subsection} 
+\subsection{Problema} %alterar o nome desta seccao
+
+\subsection{Redação da Especificação de Requisitos}
+
+\subsection{Sprints}
+
+\subsection{Testes}
 
 \section{Preliminary Results (Optional)} \label{sec:preliminaryresults}
 
@@ -204,8 +201,8 @@ Os próximos passos a realizar no projeto será a realização de uma reunião p
 %%
 %% The next two lines define the bibliography style to be used, and
 %% the bibliography file.
-\bibliographystyle{ACM-Reference-Format}
-\bibliography{bib/sample-base}
+%\bibliographystyle{ACM-Reference-Format}
+\bibliography{bib/bibliography}
 \end{document}
 
 \endinput
