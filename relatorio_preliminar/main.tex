@@ -14,7 +14,7 @@
 \acmYear{}
 \acmDOI{}
 
-\acmConference[]{Introduction to Research }{December 2021}{Lisbon}
+\acmConference[]{Introduction to Research}{December 2021}{Lisbon}
 \acmBooktitle{}
 \acmPrice{}
 \acmISBN{}
@@ -81,6 +81,16 @@ How is this document organised? \\
 
 This section should contain any information needed to understand the problem you are tackling.
 
+\subsection{Eventos}
+
+Um evento é um registo interno que é criado na aplicação ARTSOFT sempre que ocorra um acontecimento. Dentro da empresa ARTSOFT é utilizado para efetuar o registo de vários tipos de acontecimentos sendo os mais comuns os eventos de reporte de bug e eventos de roadmap. Roadmap são eventos que envolvem o desenvolvimento de funcionalidades para futuras versões do ARTSOFT. Eventos que reportam bugs no funcionamento da aplicação ARTSOFT, estes eventos podem ser criados devido a reportes internos ou por clientes da aplicação ARTSOFT. Um evento de bug ao ser criado é enviado para a entrada do Departamento de Programação (DRP), aí o mesmo é atribuído a um membro da equipa. O programador responsável pelo evento ao concluir o seu trabalho transfere o evento para a Unidade de Qualidade de Software (UQS). A equipa de testes vai testar o evento, confirmando se o mesmo se encontra resolvido. Caso o evento se encontre resolvido é assinalado como tal e é passado para a saída do DPR, senão o evento é passado de volta para o programador responsável pelo evento.
+
+\begin{figure}[htbp]
+	\centerline{\includegraphics[width=\linewidth]{figures/evento_formacao.png}}
+	\caption{Example of an event.}
+	\label{fig1}
+\end{figure}
+
 \subsection{Ferramentas Utilizadas}
 
 %ARTSOFT, TortoiseSVN (controlo de versoes), Jenkins (compilar codigo na rede)
@@ -89,17 +99,13 @@ This section should contain any information needed to understand the problem you
 
 \subsubsection{TortoiseSVN}
 
-TortoiseSVN é um cliente open-source para a aplicação Apache Subversion oferecendo uma interface gráfica, um submenu de contexto no explorador do windows e acesso rápido a todos os comandos oferecidos pelo Subversion. Subversion é uma aplicação de controlo de versões que corre num servidor centralizado. Uma arquitetura centralizada oferece várias vantagens em comparação com uma arquitetura distribuída (i.e. Git): O repositório encontra-se hospedado num servidor central, retirando a necessidade de clonar o repositório na sua totalidade. Isto também permite a atualização somente dos ficheiros locais. Ambos estes fatores levam a uma carga inferior da rede, contudo também implica se o servidor central se encontrar em baixo também se encontra o serviço. Subversion também permite a definição de restrição de acessos e o bloqueio de escrita simultânea de ficheiros, impedido o merge de binário.
+O TortoiseSVN é um cliente \textit{open source} para a aplicação Apache Subversion oferecendo uma interface gráfica, um submenu de contexto no explorador do windows e acesso rápido a todos os comandos oferecidos pelo Subversion. Subversion é uma aplicação de controlo de versões que corre num servidor centralizado. Uma arquitetura centralizada oferece várias vantagens em comparação com uma arquitetura distribuída: O repositório encontra-se hospedado num servidor central, retirando a necessidade de clonar o repositório na sua totalidade. Isto também permite a atualização somente dos ficheiros locais. Ambos estes fatores levam a uma carga inferior da rede, contudo também implica se o servidor central se encontrar em baixo também se encontra o serviço. Subversion também permite a definição de restrição de acessos e o bloqueio de escrita simultânea de ficheiros, impedido o merge de binários.
 
 \subsubsection{Jenkins}
 
-\textit{DevOps} é um conjunto de filosofias e práticas que promovem o desenvolvimento e lançamento de aplicações com maior rapidez e superior qualidade. Duas das práticas mais relevantes em \textit{DevOps} são \textit{Continuous Integration} e \textit{Continuous Delivery}. \textit{Continuous Integration} é uma prática aonde programadores integram, com regularidade, código desenvolvido para um repositório central aonde é automaticamente compilado e são efetuados testes sobre o mesmo. Este mesmo código é automaticamente preparado para lançamento, sendo a base de \textit{Continuous Delivery}. Com o objetivo de promover estas práticas a empresa de ARTSOFT usa a ferramenta Jenkins. Jenkins é um servidor de automação \textit{open source} que corre em \textit{servlet containers}. Jenkins facilita \textit{Continuous Integration} e \textit{Continuous Delivery} utilizando \textit{pipelines} para automizar a compilação de binários. Ao definir um conjunto de processos, pipelines permitem a compilação, contrução e lançamento automático de código.
+\textit{DevOps} é um conjunto de filosofias e práticas que promovem o desenvolvimento e lançamento de aplicações com maior rapidez e qualidade. Duas das práticas mais relevantes são \textit{Continuous Integration} e \textit{Continuous Delivery}. \textit{Continuous Integration} é uma prática aonde programadores integram, com regularidade, código desenvolvido para um repositório central sendo automaticamente compilado e efetuados testes sobre o mesmo. Este depois é automaticamente preparado para lançamento, sendo esta a base de \textit{Continuous Delivery}. Com o objetivo de promover estas práticas a empresa ARTSOFT usa a ferramenta Jenkins - um servidor de automação \textit{open source} que corre em \textit{servlet containers} facilitando \textit{Continuous Integration} e \textit{Continuous Delivery} através de \textit{pipelines} para automizar a compilação de binários através da definição de um conjunto de processos que permitem às pipelines compilar, construir e lançar automaticamente o código produzido.
 
 %adicionar imagem de 1 pipeline
-
-\subsection{Eventos}
-
-Um evento é um registo interno que é criado na aplicação ARTSOFT sempre que ocorra um acontecimento. Dentro da empresa ARTSOFT é utilizado para efetuar o registo de vários tipos de acontecimentos sendo os mais comuns os eventos de reporte de bug e eventos de roadmap. Roadmap são eventos que envolvem o desenvolvimento de funcionalidades para futuras versões do ARTSOFT. Eventos que reportam bugs no funcionamento da aplicação ARTSOFT, estes eventos podem ser criados devido a reportes internos ou por clientes da aplicação ARTSOFT. Um evento de bug ao ser criado é enviado para a entrada do Departamento de Programação (DRP), aí o mesmo é atribuído a um membro da equipa. O programador responsável pelo evento ao concluir o seu trabalho transfere o evento para a Unidade de Qualidade de Software (UQS). A equipa de testes vai testar o evento, confirmando se o mesmo se encontra resolvido. Caso o evento se encontre resolvido é assinalado como tal e é passado para a saída do DPR, senão o evento é passado de volta para o programador responsável pelo evento.
 
 \subsection{Formação}
 
@@ -161,7 +167,7 @@ Os próximos passos a realizar no projeto será a realização de uma reunião p
 %%
 %% The next two lines define the bibliography style to be used, and
 %% the bibliography file.
-%\bibliographystyle{ACM-Reference-Format}
+\bibliographystyle{ACM-Reference-Format}
 \bibliography{bib/bibliography}
 \end{document}
 
