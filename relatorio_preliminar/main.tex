@@ -71,9 +71,9 @@ Este relatório foi desenvolvido com o propósito de descrever o ambito do tema 
 
 \subsection{Ferramentas Utilizadas}
 
-\subsubsection{ERP ARTSOFT}
+%\subsubsection{ERP ARTSOFT} nao parece util ter isto
 
-ERP ARTSOFT é o nome da aplicação desenvolvida na empresa ARTSOFT e é crucial para todo o desenvolvimento efetuado na empresa. Internamente são utilizadas várias funcionalidades da aplicação, em particular, workflows e a criação e gestão de eventos. 
+%ERP ARTSOFT é o nome da aplicação desenvolvida na empresa ARTSOFT e é crucial para todo o desenvolvimento efetuado na empresa. Internamente são utilizadas várias funcionalidades da aplicação, em particular, workflows e a criação e gestão de eventos. 
 
 \subsubsection{TortoiseSVN}
 
@@ -109,9 +109,15 @@ Os primeiros três meses da minha tese foram dedicados à minha formação. O pr
 
 \subsubsection{Diário}
 
-\subsubsection{Documento}
+Um diário é uma coleção de registos de conta aonde muitas das vezes refletem a organização dos documentos contablísticos da empresa.
 
 \subsubsection{Conta}
+
+Uma conta pode ser representada por uma coleção de documentos sendo os mesmos associados a um tipo específico de documento.
+
+\subsubsection{Documento}
+
+Em termos simplisticos, um documento representa uma fatura. Dado um tipo de documento o mesmo é automaticamente associado com diário ou conta especifica.
 
 \subsubsection{Conhecimentos Adquiridos}
 
@@ -126,6 +132,12 @@ Here you should describe your data in as much detail as possible. \\
 You can describe raw data and any pre-processing need for your work. \\
 
 You can have a section on exploratory data analysis. \\
+
+Para a realização deste desenvolvimento é necessário o estudo extensivo da documentação incluída dos \textit{web services} disponibilizados pela Segurança Social e pelos Fundos de Compensação. Ambos os serviços os serviços utilizam HTTPS, efetuam os seus pedidos em formato SOAP XML e tem o mesmo flow inicial, previamente é feita uma autenticação utilizando \textit{HTTP Basic Auth} utilizando a concatenação encodificada em Base64 do nome de utilizador com a \textit{password}; após uma autenticação com sucesso é possível começar a efetuar chamadas ao serviço.
+
+\subsection{Fundos de Compensação}
+
+O \textit{web service} dos Fundos de Compensação oferecem três diferentes serviços, todos relacionados com o contrato do utilizador, o registo de um novo trabalhador nos Fundos de Compensação, o informar aos Fundos de Compensação do termino de contrato de um trabalhador e a alteração dos dados de um contrato. 
 
 \section{Methods} \label{sec:methods}
 
