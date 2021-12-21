@@ -71,9 +71,9 @@ Este relatório foi desenvolvido com o propósito de descrever o ambito do tema 
 
 \subsection{Ferramentas Utilizadas}
 
-\subsubsection{ARTSOFT}
+\subsubsection{ERP ARTSOFT}
 
-ARTSOFT é o nome da aplicação desenvolvida na empresa ARTSOFT e é crucial para todo o desenvolvimento. Internamente  
+ERP ARTSOFT é o nome da aplicação desenvolvida na empresa ARTSOFT e é crucial para todo o desenvolvimento efetuado na empresa. Internamente são utilizadas várias funcionalidades da aplicação, em particular, workflows e a criação e gestão de eventos. 
 
 \subsubsection{TortoiseSVN}
 
@@ -87,17 +87,25 @@ O TortoiseSVN é um cliente \textit{open source} para a aplicação Apache Subve
 
 \subsection{Eventos}
 
-Um evento é um registo interno que é criado na aplicação ARTSOFT sempre que ocorra um acontecimento. Dentro da empresa ARTSOFT é utilizado para efetuar o registo de vários tipos de acontecimentos sendo os mais comuns os eventos de reporte de bug e eventos de roadmap. Roadmap são eventos que envolvem o desenvolvimento de funcionalidades para futuras versões do ARTSOFT. Eventos que reportam bugs no funcionamento da aplicação ARTSOFT, estes eventos podem ser criados devido a reportes internos ou por clientes da aplicação ARTSOFT. Um evento de bug ao ser criado é enviado para a entrada do Departamento de Programação (DRP), aí o mesmo é atribuído a um membro da equipa. O programador responsável pelo evento ao concluir o seu trabalho transfere o evento para a Unidade de Qualidade de Software (UQS). A equipa de testes vai testar o evento, confirmando se o mesmo se encontra resolvido. Caso o evento se encontre resolvido é assinalado como tal e é passado para a saída do DPR, senão o evento é passado de volta para o programador responsável pelo evento.
+Um evento é um registo interno que é criado na aplicação ERP ARTSOFT sempre que ocorra um acontecimento. Dentro da empresa ARTSOFT é utilizado para efetuar o registo de vários tipos de acontecimentos sendo os mais comuns os eventos de reporte de bugs e eventos de roadmap. Roadmap são eventos que envolvem o desenvolvimento de funcionalidades para futuras versões do ARTSOFT. Eventos que reportam bugs no funcionamento da aplicação ARTSOFT, estes eventos podem ser criados devido a reportes internos ou por clientes da aplicação ARTSOFT. Na criação de um evento o utilizador tem obrigatoriamente de fornecer as seguintes informações: o cliente do evento, o tipo de evento e o assunto do evento; adicionalmente é possível adicionar uma mensagem para descrever o evento em mais detalhe e até adicionar imagens. No contexto de um reporte de bug ou roadmap é necessário indicar a que modulo do ERP ARTSOFT este evento se enquadra, esta informação toda é possível ser visualizada na imagem abaixo.
+
+\begin{figure}[htbp]
+	\centerline{\includegraphics[width=\linewidth]{figures/evento_criacao.png}}
+	\caption{Criação de um evento}
+	\label{fig1}
+\end{figure}
+
+Um evento de bug ao ser criado é enviado para a entrada do Departamento de Programação (DRP), aí o mesmo é atribuído a um membro da equipa. O programador responsável pelo evento ao concluir o seu trabalho transfere o evento para a Unidade de Qualidade de Software (UQS). A equipa de testes vai testar o evento, confirmando se o mesmo se encontra resolvido. Caso o evento se encontre resolvido é assinalado como tal e é passado para a saída do DPR, senão o evento é passado de volta para o programador responsável pelo evento.
+
+\subsection{Formação}
+
+Os primeiros três meses da minha tese foram dedicados à minha formação. O primeiro dia foi dedicado a ensinar-me os conceitos básicos do funcionamento da aplicação ARTSOFT, o funcionamento das ferramentas utilizadas para o controlo de versões e como funciona o fluxo de um evento. O restante da minha primeira semana foi dispendido a tratar de um evento de tipo roadmap, evento que foi criado somente com o propósito de formação, que me deu contacto com tudo que iria necessitar para efetuar desenvolvimento na aplicação ARTSOFT. O evento pedia a criação de uma interface que, dado um de três tipos de entradas: Diário, Documento, Conta, apresentasse ao utilizador transações presentes na entrada selecionada. Os três tipos de entradas requerem o número da entrada a consultar, sendo possível fornecer diferentes tipos consoante o tipo de entrada para filtrar os resultados. O diário é possível limitar ao mês que se pretende consultar enquanto que o documento é possível filtrar por tipo de documento. Na seguinte imagem é possível visualizar o evento acima descrito e as algumas das mensagens registadas durante o desenvolvimento da funcionalidade descrita.
 
 \begin{figure}[htbp]
 	\centerline{\includegraphics[width=\linewidth]{figures/evento_formacao.png}}
 	\caption{Registo do evento de formação}
-	\label{fig1}
+	\label{fig2}
 \end{figure}
-
-\subsection{Formação}
-
-Os primeiros três meses da minha tese foram dedicados à minha formação. O primeiro dia foi dedicado a ensinar-me os conceitos básicos do funcionamento da aplicação ARTSOFT, o funcionamento das ferramentas utilizadas para o controlo de versões e como funciona o fluxo de um evento. O restante da minha primeira semana foi dispendido a tratar de um evento de tipo roadmap, evento que foi criado somente com o propósito de formação, que me deu contacto com tudo que iria necessitar para efetuar desenvolvimento na aplicação ARTSOFT. O evento pedia a criação de uma interface que, dado um de três tipos de entradas: Diário, Documento, Conta, apresentasse ao utilizador transações presentes na entrada selecionada. Os três tipos de entradas requerem o número da entrada a consultar, sendo possível fornecer diferentes tipos consoante o tipo de entrada para filtrar os resultados. O diário é possível limitar ao mês que se pretende consultar enquanto que o documento é possível filtrar por tipo de documento.
 
 \subsubsection{Diário}
 
@@ -139,7 +147,7 @@ This should be based on related word, your understanding of the problem and even
 
 %Here you should write the conclusion of the preliminary work and the goals for the remaining period.
 
-O passo seguinte a realizar no projeto será a realização de uma reunião para apresentar e aprovar a especificação de requisitos. Dada a aprovação, serão definidos vários SPRINTS quinzenais com diferentes objetivos vão ser implementadas as interfaces gráficas e requisitos descritos na especificação. Uma vez implementadas, irá ser utilizado o ambiente de qualidade para realizar testes de forma a confirmar o correto comportamento das funcionalidades implementadas. Estas novas funcionalidades irão ser incluídas na nova versão da aplicação ARTSOFT, aonde será realizado tratamento de bugs que surgam nas funcionalidades implementadas.
+O passo seguinte a realizar no projeto será a realização de uma reunião para apresentar e aprovar a especificação de requisitos. Dada a aprovação, utilizando uma metodologia agile, serão definidos vários SPRINTS quinzenais com diferentes objetivos vão ser implementadas as interfaces gráficas e requisitos descritos na especificação. Uma vez implementadas, irá ser utilizado o ambiente de qualidade para realizar testes de forma a confirmar o correto comportamento das funcionalidades implementadas. Estas novas funcionalidades irão ser incluídas na nova versão da aplicação ARTSOFT, aonde será realizado tratamento de bugs que surgam nas funcionalidades implementadas.
 
 %%
 %% The next two lines define the bibliography style to be used, and
