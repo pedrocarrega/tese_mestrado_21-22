@@ -71,9 +71,7 @@ Este relatório foi desenvolvido com o propósito de descrever o ambito do tema 
 
 \subsection{Ferramentas Utilizadas}
 
-%\subsubsection{ERP ARTSOFT} nao parece util ter isto
-
-%ERP ARTSOFT é o nome da aplicação desenvolvida na empresa ARTSOFT e é crucial para todo o desenvolvimento efetuado na empresa. Internamente são utilizadas várias funcionalidades da aplicação, em particular, workflows e a criação e gestão de eventos. 
+Nesta secção vão ser apresentadas algumas das ferramentas utilizadas internamente para o desenvolvimento da aplicação ERP ARTSOFT.
 
 \subsubsection{TortoiseSVN}
 
@@ -88,19 +86,16 @@ O TortoiseSVN é um cliente \textit{open source} para a aplicação Apache Subve
 \subsection{Eventos}
 
 Um evento é um registo interno que é criado na aplicação ERP ARTSOFT sempre que ocorra um acontecimento. Dentro da empresa ARTSOFT é utilizado para efetuar o registo de vários tipos de acontecimentos sendo os mais comuns os eventos de reporte de bugs e eventos de roadmap. Roadmap são eventos que envolvem o desenvolvimento de funcionalidades para futuras versões do ARTSOFT. Eventos que reportam bugs no funcionamento da aplicação ARTSOFT, estes eventos podem ser criados devido a reportes internos ou por clientes da aplicação ARTSOFT. Na criação de um evento o utilizador tem obrigatoriamente de fornecer as seguintes informações: o cliente do evento, o tipo de evento e o assunto do evento; adicionalmente é possível adicionar uma mensagem para descrever o evento em mais detalhe e até adicionar imagens. No contexto de um reporte de bug ou roadmap é necessário indicar a que modulo do ERP ARTSOFT este evento se enquadra, esta informação toda é possível ser visualizada na imagem abaixo.
-
 \begin{figure}[htbp]
 	\centerline{\includegraphics[width=\linewidth]{figures/evento_criacao.png}}
 	\caption{Criação de um evento}
 	\label{fig1}
 \end{figure}
-
 Um evento de bug ao ser criado é enviado para a entrada do Departamento de Programação (DRP), aí o mesmo é atribuído a um membro da equipa. O programador responsável pelo evento ao concluir o seu trabalho transfere o evento para a Unidade de Qualidade de Software (UQS). A equipa de testes vai testar o evento, confirmando se o mesmo se encontra resolvido. Caso o evento se encontre resolvido é assinalado como tal e é passado para a saída do DPR, senão o evento é passado de volta para o programador responsável pelo evento.
 
 \subsection{Formação}
 
 Os primeiros três meses da minha tese foram dedicados à minha formação. O primeiro dia foi dedicado a ensinar-me os conceitos básicos do funcionamento da aplicação ARTSOFT, o funcionamento das ferramentas utilizadas para o controlo de versões e como funciona o fluxo de um evento. O restante da minha primeira semana foi dispendido a tratar de um evento de tipo roadmap, evento que foi criado somente com o propósito de formação, que me deu contacto com tudo que iria necessitar para efetuar desenvolvimento na aplicação ARTSOFT. O evento pedia a criação de uma interface que, dado um de três tipos de entradas: Diário, Documento, Conta, apresentasse ao utilizador transações presentes na entrada selecionada. Os três tipos de entradas requerem o número da entrada a consultar, sendo possível fornecer diferentes tipos consoante o tipo de entrada para filtrar os resultados. O diário é possível limitar ao mês que se pretende consultar enquanto que o documento é possível filtrar por tipo de documento. Na seguinte imagem é possível visualizar o evento acima descrito e as algumas das mensagens registadas durante o desenvolvimento da funcionalidade descrita.
-
 \begin{figure}[htbp]
 	\centerline{\includegraphics[width=\linewidth]{figures/evento_formacao.png}}
 	\caption{Registo do evento de formação}
@@ -117,27 +112,51 @@ Uma conta pode ser representada por uma coleção de documentos sendo os mesmos 
 
 \subsubsection{Documento}
 
-Em termos simplisticos, um documento representa uma fatura. Dado um tipo de documento o mesmo é automaticamente associado com diário ou conta especifica.
+Em termos simplisticos, um documento representa uma fatu-ra. Dado um tipo de documento o mesmo é automaticamente associado com diário ou conta especifica.
+
+Após a entrega desta nova funcionalidade foi me atribuído regularmente diferentes eventos até o prazo que se inicializou o desenvolvimento na nova versão do ARTSOFT.
 
 \subsubsection{Conhecimentos Adquiridos}
 
 %Este desenvolvimento é perfeito para introduzir um programador a trabalhar com a linguagem C++ e a utilizar as ferramentes já existentes na aplicação ARTSOFT. Ao ter de criar uma interface gráfica 
- Após a entrega desta nova funcionalidade foi me atribuído regularmente diferentes eventos até o prazo que se inicializou o desenvolvimento na nova versão do ARTSOFT.
+ 
 
 \section{Data} \label{sec:data}
 
-%Falar da documentação dos web services
-Here you should describe your data in as much detail as possible. \\ 
+Para a realização deste desenvolvimento é necessário o estudo extensivo da documentação incluída dos \textit{web services} disponibilizados pela Segurança Social e pelos Fundos de Compensação. Ambos os serviços utilizam HTTPS efetuando os seus pedidos em formato SOAP XML, sendo um formato muito comum devido à sua versatilidade, e usam o mesmo fluxo inicial ao autenticar utilizando \textit{HTTP Basic Auth} a partir da concatenação encodificada em Base64 do nome de utilizador com a \textit{password}; após uma autenticação com sucesso é possível começar a efetuar chamadas ao serviço. Todos os serviços seguem ao mesmo fluxo de ser enviado um pedido e receber uma resposta ao pedido por isso vai ser somente analisado três serviços em detalhe, um serviço dos Fundos de Compensação e dois serviços da Segurança Social. Na imagem abaixo é encontra-se representado o fluxo de qualquer serviço fornecido pelo \textit{web service} da Segurança Social ou Fundos de Compensação.
+\begin{figure}[htbp] %colocar imagem
+	\centerline{\includegraphics[width=\linewidth]{figures/evento_formacao.png}}
+	\caption{Fluxo de serviço}
+	\label{fig3}
+\end{figure}
 
-You can describe raw data and any pre-processing need for your work. \\
-
-You can have a section on exploratory data analysis. \\
-
-Para a realização deste desenvolvimento é necessário o estudo extensivo da documentação incluída dos \textit{web services} disponibilizados pela Segurança Social e pelos Fundos de Compensação. Ambos os serviços os serviços utilizam HTTPS, efetuam os seus pedidos em formato SOAP XML e tem o mesmo flow inicial, previamente é feita uma autenticação utilizando \textit{HTTP Basic Auth} utilizando a concatenação encodificada em Base64 do nome de utilizador com a \textit{password}; após uma autenticação com sucesso é possível começar a efetuar chamadas ao serviço.
 
 \subsection{Fundos de Compensação}
 
-O \textit{web service} dos Fundos de Compensação oferecem três diferentes serviços, todos relacionados com o contrato do utilizador, o registo de um novo trabalhador nos Fundos de Compensação, o informar aos Fundos de Compensação do termino de contrato de um trabalhador e a alteração dos dados de um contrato. 
+O \textit{web service} dos Fundos de Compensação oferecem três diferentes serviços, todos relacionados com o contrato do utilizador, o registo de um novo trabalhador nos Fundos de Compensação, o informar aos Fundos de Compensação do termino de contrato de um trabalhador e a alteração dos dados de um contrato sendo o serviço de registo de um trabalhador que vai ser analisado. Como mencionado antes, este serviço comunica utilizando HTTPS com os pedidos sendo em formato SOAP XML guardando os dados relevantes ao pedido no corpo da mensagem. Em respetivo ao pedido de registo de um novo trabalhador os seguintes parâmetros tem de ser inseridos no corpo da mensagem:
+\begin{itemize}
+  \item Número de Identificação de Segurança Social (NISS) do trabalhador;
+  \item A modalidade do contrato de trabalho;
+  \item A data de início de contrato;
+  \item A retribuição base do trabalhador.
+\end{itemize}
+Existem ainda mais dois parâmetros possíveis de inserção, a data fim de contrato sendo este campo obrigatório no caso da modalidade de contrato ser um contrato a termo e as diuturnidades do contrato. O número de identificação de Segurança Social tem de ser um número com onze digitos e tem de se encontrar válido na Segurança Social, a modalidade do contrato tem de correspônder à tabela fornecida na documentação tendo um valor alfabético de A a S, a data de início e fim de contrato tem de obedecer ao formato AAAA-MM-DD sendo a data mínima 2013-10-01, por fim a retribuição base e diuturnidades são representadas ambas por um número com oito digitos aonde dois deles representam casas decimais. Depois de submetido o pedido podem vir dois tipos de respostas, no caso de sucesso no corpo da mensagem é enviado o número identificador de contrato; no caso de insucesso no corpo da mensagem encontra-se um código de erro que segue a tabela presente na documentação e uma mensagem de erro descritiva.
+
+\subsection{Segurança Social}
+
+No caso do \textit{web service} disponibilizado pela Segurança Social serão implementados somente quatro serviços, a submissão do vínculo do trabalhador à Segurança Social, a submissão da declaração mensal de renumerações, a atualização da declaração mensal de renumerações e o consultar do estado de uma declaração mensal de renumerações previamente entregue à Segurança Social; para o ambito deste relatório vai ser apresentado a submissão do vínculo do trabalhador e a submissão da declaração mensal de renumerações. Vamos primeiro analisar o serviço da submissão do vínculo, tal como o serviço analisado dos Fundos de Compensação os dados são enviados a partir do corpo da mensagem aonde vários deles são obrigatórios sendo esses:
+\begin{itemize}
+  \item NISS do trabalhador;
+  \item Data de nascimento;
+  \item Modalidade de contrato;
+  \item Data de início de contrato;
+  \item Profissão;
+  \item Renumeração base;
+  \item Local de trabalhado;
+\end{itemize}
+Em adição existem os seguintes parâmetros opcionais, a data fim de contrato que é obrigatório no caso do contrato ser a tempo certo ou de muita curta duração, as diuturnidades do contrato, a percentagem, horas e os dias de trabalho no caso de se referir a um contrato a tempo parcial, o motivo de contrato se o contrato for a termo certo ou incerto e o NISS do trabalhador a substituir. Muitos dos formatos de dados presentes no serviço dos Fundos de Compensação mantém-se nos serviços da Segurança Social, ou seja, o NISS é um número com onze digitos que tem de referir a um número válido na Segurança Social, a data de nascimento, início e fim de contrato é uma data com o formato AAAA-MM-DD, a modalidade e motivo de contrato e a profissão são representados por um código alfabético cujos valores são fornecidos por uma tabela presente na documentação do \textit{web service}, a renumeração base e diuturnidades são representados por um número de doze digitos aonde dois deles representam números decimais, a percentagem, horas, os dias e o local de trabalho são definidos por um número inteiro. O corpo de resposta do serviço de submissão do vínculo do trabalhador é sempre o mesmo indepêndente do resultado; é enviado um código de mensagem, códigos definidos por uma tabela presente na documentação, e uma mensagem de erro descritiva caso tenha ocorrido uma falha.
+
+O ultímo serviço que vai ser analisado é o serviço de submissão da declaração mensal de renumerações à Segurança Social. A declaração mensal de renumerações é 
 
 \section{Methods} \label{sec:methods}
 
@@ -156,8 +175,6 @@ This should be based on related word, your understanding of the problem and even
 \subsection{Testes}
 
 \section{Forthcoming Work} \label{sec:forthcomingwork}
-
-%Here you should write the conclusion of the preliminary work and the goals for the remaining period.
 
 O passo seguinte a realizar no projeto será a realização de uma reunião para apresentar e aprovar a especificação de requisitos. Dada a aprovação, utilizando uma metodologia agile, serão definidos vários SPRINTS quinzenais com diferentes objetivos vão ser implementadas as interfaces gráficas e requisitos descritos na especificação. Uma vez implementadas, irá ser utilizado o ambiente de qualidade para realizar testes de forma a confirmar o correto comportamento das funcionalidades implementadas. Estas novas funcionalidades irão ser incluídas na nova versão da aplicação ARTSOFT, aonde será realizado tratamento de bugs que surgam nas funcionalidades implementadas.
 
