@@ -3,6 +3,7 @@
 \usepackage{caption}
 \usepackage{array}
 \usepackage{multirow}
+\usepackage{placeins}
 %%
 %% \BibTeX command to typeset BibTeX logo in the docs
 \AtBeginDocument{%
@@ -65,7 +66,7 @@ Este relatório foi desenvolvido com o propósito de descrever o ambito do tema 
 
 \section{Introduction}
 
-\textit{Enterprise Resource Planning} ARTSOFT é uma aplicação de gestão empresarial que é estruturada em vários modulos, oferecendo ao utilizador uma aplicação que se adapte as suas necessidades. Atualmente um utilizador da aplicação ERP ARTSOFT que queira submeter o vínculo do seu novo trabalhador tem de utilizar a plataforma online disponibilizada pela Segurança Social; este processo não é eficiente. O atual processo obriga o utilizar a submeter duas vezes a mesma informação, primeiro terá de criar a entrada do seu novo empregado na base de dados da aplicação ERP ARTSOFT, tendo de seguida submeter os dados do trabalhador na plataforma da Segurança Social. Num contexto empresarial este gasto adicional de tempo é muito caro para uma empresa, então foi inicializado um desenvolvimento com o objetivo de oferecer ao cliente a possibilidade de submeter o vínculo de contrato do seu novo trabalhador à Segurança Social diretamente da aplicação ERP ARTSOFT. Outra funcionalidade oferecida pelo \textit{web service} da Segurança Social é a submissão e atualização da declaração mensal de rendimentos. Esta funcionalidade resolve o mesmo problema que a entrega do vínculo de trabalhador resolve a perda desnecessária de tempo, atualmente o utilizador pode gerar esta declaração diretamente da aplicação ERP ARTSOFT contudo para submeter ou atualizar terá de utilizar a plataforma online da Segurança Social. O \textit{web service} dos Fundos de Compensação oferece três diferentes serviços, sendo os três relacionados com o estado de trabalhadores numa empresa permitindo reportar a admissão de um novo trabalhador, o terminar de contrato de um trabalhador e a atualização dos dados de um contrato sendo que estas três funcionalidades tem o mesmo objetivo, tal como o \textit{web service} da Segurança Social, poupar tempo ao utilizador. Com o propósito de integrar os \textit{web services} apresentados será inicializado um processo de desenvolvimento, começando pela redação de uma especificação de requisitos cuja análise permite a formalização do desenvolvimento a ser efetuado, baseada no estudo da aplicação ERP ARTSOFT e a documentação dos \textit{web services} a integrar; após a aprovação da especificação e utilizando uma metodologia agile, serão realizados SPRINTS quinzenais concluindo com uma bateria testes funcionais aos serviços integrados. Para iniciar este relatório vai ser primeiro introduzido e explicado alguns conceitos base para entender como funcionam os modulos relevantes da aplicação ERP ARTSOFT e alguns dos procedimentos internos na empresa. De seguida vai ser apresentado um relato da formação realizada, seguida de uma análise da documentação dos \textit{web services} a implementar, uma apresentação dos metodos que foram e irão ser utilizados para resolver o problema apresentado e por fim serão apresentados os próximos passos a realizar para chegar à solução do problema.
+\textit{Enterprise Resource Planning} ARTSOFT é uma aplicação de gestão empresarial que é estruturada em vários modulos, oferecendo ao utilizador uma aplicação que se adapte as suas necessidades. Atualmente um utilizador da aplicação ERP ARTSOFT que queira submeter o vínculo do seu novo trabalhador tem de utilizar a plataforma online disponibilizada pela Segurança Social; este processo não é eficiente. O atual processo obriga o utilizar a submeter duas vezes a mesma informação, primeiro terá de criar a entrada do seu novo empregado na base de dados da aplicação ERP ARTSOFT, tendo de seguida submeter os dados do trabalhador na plataforma da Segurança Social. Num contexto empresarial este gasto adicional de tempo é muito caro para uma empresa, então foi inicializado um desenvolvimento com o objetivo de oferecer ao cliente a possibilidade de submeter o vínculo de contrato do seu novo trabalhador à Segurança Social diretamente da aplicação ERP ARTSOFT. Outra funcionalidade oferecida pelo \textit{web service} da Segurança Social é a submissão e atualização da declaração mensal de rendimentos. Esta funcionalidade resolve o mesmo problema que a entrega do vínculo de trabalhador resolve a perda desnecessária de tempo, atualmente o utilizador pode gerar esta declaração diretamente da aplicação ERP ARTSOFT contudo para submeter ou atualizar terá de utilizar a plataforma online da Segurança Social. O \textit{web service} dos Fundos de Compensação oferece três diferentes serviços, sendo os três relacionados com o estado de trabalhadores numa empresa permitindo reportar a admissão de um novo trabalhador, o terminar de contrato de um trabalhador e a atualização dos dados de um contrato sendo que estas três funcionalidades tem o mesmo objetivo, tal como o \textit{web service} da Segurança Social, poupar tempo ao utilizador. Com o propósito de integrar os \textit{web services} apresentados será inicializado um processo de desenvolvimento, começando pela redação de uma especificação de requisitos cuja análise permite a formalização do desenvolvimento a ser efetuado, baseada no estudo da aplicação ERP ARTSOFT e a documentação dos \textit{web services} a integrar; após a aprovação da especificação e utilizando uma metodologia agile, serão realizados Sprints quinzenais concluindo com uma bateria testes funcionais aos serviços integrados. Para iniciar este relatório vai ser primeiro introduzido e explicado alguns conceitos base para entender como funcionam os modulos relevantes da aplicação ERP ARTSOFT e alguns dos procedimentos internos na empresa. De seguida vai ser apresentado um relato da formação realizada, seguida de uma análise da documentação dos \textit{web services} a implementar, uma apresentação dos metodos que foram e irão ser utilizados para resolver o problema apresentado e por fim serão apresentados os próximos passos a realizar para chegar à solução do problema.
 
 \section{Background} \label{sec:background}
 
@@ -86,21 +87,16 @@ O TortoiseSVN é um cliente \textit{open source} para a aplicação Apache Subve
 \subsection{Eventos}
 
 Um evento é um registo interno que é criado na aplicação ERP ARTSOFT sempre que ocorra um acontecimento. Dentro da empresa ARTSOFT é utilizado para efetuar o registo de vários tipos de acontecimentos sendo os mais comuns os eventos de reporte de bugs e eventos de roadmap. Roadmap são eventos que envolvem o desenvolvimento de funcionalidades para futuras versões do ARTSOFT. Eventos que reportam bugs no funcionamento da aplicação ARTSOFT, estes eventos podem ser criados devido a reportes internos ou por clientes da aplicação ARTSOFT. Na criação de um evento o utilizador tem obrigatoriamente de fornecer as seguintes informações: o cliente do evento, o tipo de evento e o assunto do evento; adicionalmente é possível adicionar uma mensagem para descrever o evento em mais detalhe e até adicionar imagens. No contexto de um reporte de bug ou roadmap é necessário indicar a que modulo do ERP ARTSOFT este evento se enquadra, esta informação toda é possível ser visualizada na imagem abaixo.
+\FloatBarrier
 \begin{figure}[htbp]
 	\centerline{\includegraphics[width=\linewidth]{figures/evento_criacao.png}}
 	\caption{Criação de um evento}
 	\label{fig1}
 \end{figure}
+\FloatBarrier
 Um evento de bug ao ser criado é enviado para a entrada do Departamento de Programação (DRP), aí o mesmo é atribuído a um membro da equipa. O programador responsável pelo evento ao concluir o seu trabalho transfere o evento para a Unidade de Qualidade de Software (UQS). A equipa de testes vai testar o evento, confirmando se o mesmo se encontra resolvido. Caso o evento se encontre resolvido é assinalado como tal e é passado para a saída do DPR, senão o evento é passado de volta para o programador responsável pelo evento.
 
-\subsection{Formação}
-
-Os primeiros três meses da minha tese foram dedicados à minha formação. O primeiro dia foi dedicado a ensinar-me os conceitos básicos do funcionamento da aplicação ARTSOFT, o funcionamento das ferramentas utilizadas para o controlo de versões e como funciona o fluxo de um evento. O restante da minha primeira semana foi dispendido a tratar de um evento de tipo roadmap, evento que foi criado somente com o propósito de formação, que me deu contacto com tudo que iria necessitar para efetuar desenvolvimento na aplicação ARTSOFT. O evento pedia a criação de uma interface que, dado um de três tipos de entradas: Diário, Documento, Conta, apresentasse ao utilizador transações presentes na entrada selecionada. Os três tipos de entradas requerem o número da entrada a consultar, sendo possível fornecer diferentes tipos consoante o tipo de entrada para filtrar os resultados. O diário é possível limitar ao mês que se pretende consultar enquanto que o documento é possível filtrar por tipo de documento. Na seguinte imagem é possível visualizar a entrada do evento acima descrito e as algumas das mensagens registadas durante o desenvolvimento da funcionalidade.
-\begin{figure}[htbp]
-	\centerline{\includegraphics[width=\linewidth]{figures/evento_formacao.png}}
-	\caption{Registo do evento de formação}
-	\label{fig2}
-\end{figure}
+\subsection{Tipo de Entradas}
 
 \subsubsection{Diário}
 
@@ -112,23 +108,43 @@ Uma conta pode ser representada por uma coleção de documentos sendo os mesmos 
 
 \subsubsection{Documento}
 
-Em termos simplisticos, um documento representa uma fatu-ra. Dado um tipo de documento o mesmo é automaticamente associado com diário ou conta especifica.
+Em termos simplisticos, um documento representa uma fatu-ra. Dado um tipo de documento o mesmo é automaticamente associado com diário ou uma conta especifica.
 
-Após a entrega desta nova funcionalidade foi me atribuído regularmente diferentes eventos até o prazo que se inicializou o desenvolvimento na nova versão do ARTSOFT.
+\subsection{Formação}
 
-\subsubsection{Conhecimentos Adquiridos}
+Os primeiros três meses da minha tese foram dedicados à minha formação. O primeiro dia foi-me ensinado os conceitos básicos do funcionamento da aplicação ERP ARTSOFT, o funcionamento das ferramentas utilizadas para o controlo de versões e compilação de binários e como funciona o fluxo de um evento. O restante da minha primeira semana foi dispendido a resolver um evento de tipo roadmap, evento que foi criado somente com o propósito de formação, que me deu contacto com tudo que iria necessitar para efetuar desenvolvimento na aplicação ERP ARTSOFT. O evento pedia a criação de uma interface que, dado um de três tipos de entradas: Diário, Documento ou Conta, apresentasse ao utilizador transações associadas à entrada selecionada com o propósito do utilizador poder facilmente e rapidamente consultar os lançamentos de contabilidade. Os três tipos de entradas requerem o número da entrada a consultar, sendo possível fornecer diferentes filtros consoante o tipo de entrada seleciona para filtrar os resultados. No caso do diário é possível limitar ao mês que se pretende consultar enquanto que o documento é possível filtrar por tipo de documento. Para este desenvolvimento foi necessário primeiro criar a interface utilizando as ferramentas fornecidas pelo Visual Studio que oferece uma interface gráfica para a construção de interfaces; após a criação da interface ligaram-se os controladores aos \textit{inputs} e a tabela, isto permite acesso aos valores inseridos pelo utilizador e manipular os valores da tabela. Uma vez implementado o acesso aos valores introduzidos pelo utilizador na interface, foi necessário implementar o acesso à base de dados de forma a conseguir preencher a tabela e apresentar os resultados ao utilizador sendo que o ERP ARTSOFT utiliza vários \textit{handlers} para permitir acesso às diferentes bases de dados. Com a nova janela implementada foi utilizado o TortoiseSVN para fazer \textit{commit} do novo código no servidor, utilizando depois o Jenkins para compilar os binários para permitir à equipa de testes testar a nova funcionalidade que ao serem passados o evento é assinalado como concluído. Neste caso, sendo um evento de formação, o evento não foi enviado para o servidor central, nem compilado. Na seguinte imagem é possível visualizar a entrada do evento acima descrito e as algumas das mensagens registadas durante o desenvolvimento da funcionalidade:
+\FloatBarrier
+\begin{figure}[htbp]
+	\centerline{\includegraphics[width=\linewidth]{figures/evento_formacao.png}}
+	\caption{Registo do evento de formação}
+	\label{fig2}
+\end{figure}
+\FloatBarrier
 
-%Este desenvolvimento é perfeito para introduzir um programador a trabalhar com a linguagem C++ e a utilizar as ferramentes já existentes na aplicação ARTSOFT. Ao ter de criar uma interface gráfica 
- 
+Como escrito posteriormente, este evento foi ideal para formar um programador a trabalhar na aplicação ERP ARTSOFT. Oferecendo contacto com a criação de interfaces gráficas e a manipulação das mesmas, como é efetuado o acesso às diferentes bases de dados presentes no ERP ARTSOFT e algumas das ferramentas já existentes para facilitar o desenvolvimento na aplicação. Após a entrega desta evento foi me atribuído regularmente diferentes eventos até a data que se inicializou o desenvolvimento na nova versão do ERP ARTSOFT.
+
+\section{Related Work} \label{sec:relatedwork}
+
+TODO
+
+%This is the time to do a literature review! \\
+
+%What is the state of the art on the topic you are working? \\
+
+%Previous work with same data, similar work with other data, ... \\
+
+%Problems tackled, data science approaches used, pros and cons, ... \\ 
 
 \section{Data} \label{sec:data}
 
 Para a realização deste desenvolvimento é necessário o estudo extensivo da documentação incluída dos \textit{web services} disponibilizados pela Segurança Social e pelos Fundos de Compensação. Ambos os serviços utilizam HTTPS efetuando os seus pedidos em formato SOAP XML, sendo um formato muito comum devido à sua versatilidade, e usam o mesmo fluxo inicial ao autenticar utilizando \textit{HTTP Basic Auth} a partir da concatenação encodificada em Base64 do nome de utilizador com a \textit{password}; após uma autenticação com sucesso é possível começar a efetuar chamadas ao serviço. Todos os serviços seguem ao mesmo fluxo de ser enviado um pedido e receber uma resposta ao pedido por isso vai ser somente analisado três serviços em detalhe, um serviço dos Fundos de Compensação e dois serviços da Segurança Social. Na imagem abaixo é encontra-se representado o fluxo de qualquer serviço fornecido pelo \textit{web service} da Segurança Social ou Fundos de Compensação, o utilizador efetua um pedido ao serviço da Segurança Social recebendo uma resposta a esse mesmo pedido.
+\FloatBarrier
 \begin{figure}[htbp] %colocar imagem
 	\centerline{\includegraphics[width=\linewidth]{figures/evento_formacao.png}}
 	\caption{Fluxo de serviço}
 	\label{fig3}
 \end{figure}
+\FloatBarrier
 
 
 \subsection{Fundos de Compensação}
@@ -184,16 +200,18 @@ Na introdução vão ser apresentadas as necessidades do cliente de forma a cont
   \item Reportar o fim de contrato de um trabalhador aos Fundos de Compensação
 \end{enumerate}
 Os requisitos 1, 2 e 5 foram atribuídos uma importância de grau Critíco, enquanto os restantes dos requisitos tem uma importância de grau Alto. As funcionalidades referentes aos requisitos 1, 5, 6 e 7 são acedidas a partir do mesmo ecrã da aplicação, ecrã que já se encontra presente no ERP ARTSOFT, vai ser adicionado um icon à toolbar para cada entidade aonde ao clicar nesse botão aparece um menu \textit{drop down} em que o utilizador clica na funcionalidade que pretende utilizar. Em todos estes requisitos vai aparecer o seguinte ecrã:
-\begin{figure}[htbp] %colocar imagem
+\FloatBarrier
+\begin{figure}[htbp]
 	\centerline{\includegraphics[width=\linewidth]{figures/esboco_interface.png}}
 	\caption{Esboço de interface}
 	\label{fig4}
 \end{figure}
+\FloatBarrier
 Neste ecrã o utilizador vai poder validar os dados do trabalhador presentes no sistema, ao validar os dados vai ser apresentada ao utilizador uma mensagem a confirmar o envio do pedido concluindo com a apresentação de uma mensagem ao utilizador a indicar o resultado do pedido. Relativamente aos requisitos 2, 3 e 4 vai ser implementado uma nova interface aonde o utilizador pode gerar e visualizar a sua declaração mensal de renumerações e efetuar alterações se necessário. Além de gerar o utilizador vai poder selecionar um botão que efetua o envio da declaração mensal de renumerações, antes do envio é efetuada uma confirmação de ação com o utilizador e depois apresentada uma mensagem a indicar o resultado do pedido. O utilizador também terá a possibilidade de selecionar uma declaração préviamente entregue à Segurança Social e efetuar um pedido para determinar o estado da mesma.
 
-\subsection{SPRINTS}
-%explicar o k sao sprints e metodologia agile
-Para este desenvolvimento vai ser utilizada uma metodologia Agile  
+\subsection{Sprints}
+
+Para este desenvolvimento vai ser utilizada uma metodologia Agile, ou seja, é efetuada uma divisão do desenvolvimento em várias fases permitindo um desenvolvimento incremental da solução. Uma vez começado o projeto inicia-se um ciclo de planeamento, execução e avaliação. O Sprint é uma aplicação desta metodologia sendo definido por um espaço de tempo fixo (entre uma a quatro semanas) onde primeiro é realizada uma reunião para definir os objetivos do atual Sprint seguido do desenvolvimento dos objetivos previamente definidos, após a conclusão do período de tempo estabelecido é efetuada uma avaliação do progresso efetuado durante o Sprint, concluindo com uma retrospetiva do que pode ser melhorado para futuros Sprints que se repetiram até o fim do desenvolvimento do projeto. Para o desenvolvimento deste projeto vai ser aplicada a metodologia Agile realizando Sprints quinzenais até o fim do desenvolvimento.
 
 
 \subsection{Testes}
@@ -202,7 +220,7 @@ Para concluir o desenvolvimento serão efetuados funcionais aos requisitos para 
 
 \section{Forthcoming Work} \label{sec:forthcomingwork}
 
-O passo seguinte a realizar no projeto será a realização de uma reunião para apresentar e aprovar a especificação de requisitos. Dada a aprovação, utilizando uma metodologia agile, serão definidos vários SPRINTS quinzenais com diferentes objetivos vão ser implementadas as interfaces gráficas e requisitos descritos na especificação. Uma vez implementadas, irá ser utilizado o ambiente de qualidade para realizar testes de forma a confirmar o correto comportamento das funcionalidades implementadas. Estas novas funcionalidades irão ser incluídas na nova versão da aplicação ARTSOFT, aonde será realizado tratamento de bugs que surgam nas funcionalidades implementadas.
+O passo seguinte a realizar no projeto será a realização de uma reunião para apresentar e aprovar a especificação de requisitos. Dada a aprovação, utilizando uma metodologia agile, serão definidos vários Sprints quinzenais com diferentes objetivos vão ser implementadas as interfaces gráficas e requisitos descritos na especificação. Uma vez implementadas, irá ser utilizado o ambiente de qualidade para realizar testes de forma a confirmar o correto comportamento das funcionalidades implementadas. Estas novas funcionalidades irão ser incluídas na nova versão da aplicação ARTSOFT, aonde será realizado tratamento de bugs que surgam nas funcionalidades implementadas.
 
 %%
 %% The next two lines define the bibliography style to be used, and
