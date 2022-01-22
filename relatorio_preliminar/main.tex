@@ -6,6 +6,7 @@
 \usepackage{placeins}
 
 \renewcommand{\figurename}{Figura}
+\renewcommand{\bibname}{Referência}
 \AtBeginDocument{
   \providecommand\BibTeX{{
     \normalfont B\kern-0.5em{\scshape i\kern-0.25em b}\kern-0.8em\TeX}}}
@@ -61,7 +62,7 @@ Nesta secção vão ser apresentadas algumas das ferramentas utilizadas internam
 
 \subsubsection{TortoiseSVN}
 
-O TortoiseSVN é um cliente \textit{open source} para a aplicação Apache Subversion, uma aplicação de controlo de versões que corre num servidor centralizado, oferecendo uma interface gráfica, um submenu de contexto no explorador do \textit{windows} e acesso rápido a todos os comandos oferecidos pelo Subversion. Uma arquitetura centralizada oferece várias vantagens em comparação com uma arquitetura distribuída: O repositório encontra-se hospedado num servidor central, retirando a necessidade de clonar o repositório na sua totalidade e permitindo também a atualização somente dos ficheiros locais. Ambos estes fatores levam a uma carga inferior da rede. Contudo também implica que se o servidor central se encontrar indisponível, o serviço também está indisponível. Subversion também permite a definição de restrição de acessos e o bloqueio de escrita simultânea de ficheiros, impedido o \textit{merge} de binários.
+O TortoiseSVN é um cliente \textit{open source} para a aplicação Apache Subversion, uma aplicação de controlo de versões que corre num servidor centralizado, oferecendo uma interface gráfica, um submenu de contexto no explorador do \textit{windows} e acesso rápido a todos os comandos oferecidos pelo Subversion. Uma arquitetura centralizada oferece várias vantagens em comparação com uma arquitetura distribuída: O repositório encontra-se hospedado num servidor central, retirando a necessidade de clonar o repositório na sua totalidade e permitindo também a atualização somente dos ficheiros locais\cite{subversion}. Ambos estes fatores levam a uma carga inferior da rede. Contudo também implica que se o servidor central se encontrar indisponível, o serviço também está indisponível. Subversion também permite a definição de restrição de acessos e o bloqueio de escrita simultânea de ficheiros, impedido o \textit{merge} de binários.
 
 \subsubsection{Jenkins}
 
@@ -113,15 +114,17 @@ O evento de tipo \textit{roadmap} que me foi atribuído permitiu que tivesse con
 A realização deste evento foi ideal para formar um programador a trabalhar na aplicação ERP ARTSOFT pois possibilitou o contacto com a criação de interfaces gráficas e a manipulação das mesmas, como acesso às diferentes bases de dados presentes no ERP ARTSOFT e com algumas das ferramentas já existentes para facilitar o desenvolvimento na aplicação.
 \section{Trabalho Relacionado} \label{sec:relatedwork}
 
-TODO
-
-%This is the time to do a literature review! \\
-
 %What is the state of the art on the topic you are working? \\
+
+\textit{Web services} é um tema já muito explorado na area de engenharia de \textit{software}. É uma área em constante evolução existindo vários artigos e \textit{papers} que propõe e exploram diferentes metodologias e técnicas de implementação.
 
 %Previous work with same data, similar work with other data, ... \\
 
 %Problems tackled, data science approaches used, pros and cons, ... \\ 
+
+O \textit{paper "Web Services Implementation Methodology for SOA Application"}\cite{SOAA} descreveram que as atuais metodologias utilizadas para o desenvolvimento de aplicações que integram \textit{web services} no seu funcionamento não se revelam suficientes. As principais dificuldades que foram destacadas são - a dificuldade em determinar todos os requisitos da aplicação dado que os requisitos não provém  de uma só fonte; e a implementação no consumo e comunicação do serviço pois diferentes sistemas utilizam diferentes interfaces e métodos de interação. A solução proposta é a integração na metodologia \textit{Agile} as melhores práticas no desenvolvimento de \textit{web services}, contudo os autores não apresentam resultados que suportem a eficacia da sua solução.
+
+\textit{Middlewares} foram criados com o propósito de permitir a comunicação entre diferentes sistemas independentemente da implementação ou \textit{hardware} que utilizem. Contudo, com o aumento da complexidade de \textit{middlewares} o problema para qual foram criados para resolver voltou a surgir, criando uma necessidade de \textit{"middleware for middleware"}\cite{vinoskiMiddleware}. \textit{Web services} tentam resolver este problema mas ao focarem as implementações em usar a SOAP API, os programadores destas soluções estão a ficar aquém do potencial de \textit{web services}. SOAP API não segue um padrão universal, ou seja, diferentes aplicações têm diferentes implementações da mesma. Este é o problema apresentado no artigo de Steve Vinoski\cite{vinoskiIntegration}, que expõem e explica em detalhe um dos problemas que \textit{web services} enfrentam. O autor desenvolve o tema ao apresentar várias soluções, em particular, uma solução em desenvolvimento por uma equipa de engenheiros da \textit{Sun Microsystems} com o nome \textit{Web Services Invocation Framework} (WSIF). Segundo o autor, esta solução resolve vários dos problemas atuais de \textit{web services} mas é longe de ser perfeita sendo exclusiva a soluções que utilizem Java.
 
 \section{Contexto} \label{sec:data}
 
@@ -200,8 +203,7 @@ Neste ecrã, o utilizador vai poder validar os dados do trabalhador presentes no
 
 \subsection{\textit{Sprints}}
 
-Para este desenvolvimento vai ser utilizada uma metodologia \textit{Agile}. \textit{Agile} é uma metodologia que propõe que um projeto de desenvolvimento deve ser dividido em várias pequenas fases, a que se dá o nome de \textit{Sprints}, com o objetivo de promover o desenvolvimento incremental da solução. Uma vez começado o projeto inicia-se um ciclo de planeamento, execução e avaliação. O \textit{Sprints} tem um espaço de tempo fixo (entre uma a quatro semanas) onde primeiro é realizada uma reunião para definir os objetivos do atual \textit{Sprints} seguido do desenvolvimento dos objetivos definidos. Após a conclusão do período de tempo estabelecido é efetuada uma avaliação do progresso efetuado durante o \textit{Sprints}, concluindo com uma retrospetiva do que pode ser melhorado para futuros \textit{Sprints} que se repetirão até ao fim do desenvolvimento do projeto. Para o desenvolvimento deste projeto vai ser aplicada a metodologia \textit{Agile} realizando \textit{Sprints} quinzenais.
-
+Para este desenvolvimento vai ser utilizada uma metodologia \textit{Agile} que propõe que o desenvolvimento de um projeto deve ser dividido em várias pequenas fases (chamadas \textit{Sprints}) com o objetivo de promover o desenvolvimento incremental da solução. Uma vez começado o projeto inicia-se um ciclo de planeamento, execução e avaliação. O \textit{Sprints} tem um espaço de tempo fixo (entre uma a quatro semanas) onde primeiro é realizada uma reunião para definir os objetivos do atual \textit{Sprints} seguido do desenvolvimento dos objetivos definidos. Após a conclusão do período de tempo estabelecido é efetuada uma avaliação do progresso efetuado durante o \textit{Sprints}, concluindo com uma retrospetiva do que pode ser melhorado para futuros \textit{Sprints} que se repetirão até ao fim do desenvolvimento do projeto. Este projeto será desenvolvido usando a metodologia \textit{Agile} realizando \textit{Sprints} quinzenais.
 
 \subsection{Testes}
 
