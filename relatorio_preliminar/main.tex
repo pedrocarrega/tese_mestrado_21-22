@@ -46,7 +46,7 @@ Este relatório foi desenvolvido com o propósito de descrever o âmbito do proj
 
 \textit{Enterprise Resource Planning} ARTSOFT é uma aplicação de gestão empresarial que é estruturada em vários módulos, como Gestão Comercial, Contabilidade e Gestão Financeira e Recursos Humanos, permitindo adaptar a solução às necessidades do utilizador. Atualmente, um utilizador da aplicação ERP ARTSOFT que queira submeter o vínculo de um novo trabalhador, tem de utilizar a plataforma online disponibilizada pela Segurança Social; este processo não é eficiente porque obriga o utilizador a submeter duas vezes a mesma informação - primeiro tem de criar a entrada do seu novo empregado na base de dados da aplicação ERP ARTSOFT e de seguida submeter os dados do trabalhador na plataforma da Segurança Social. Num contexto empresarial, este gasto adicional de tempo é muito caro. Foi iniciado um desenvolvimento com o objetivo de oferecer ao cliente a possibilidade de submeter o vínculo de contrato do seu novo trabalhador à Segurança Social diretamente na aplicação ERP ARTSOFT.
 
-Outra funcionalidade oferecida pelo \textit{web service} da Segurança Social é a submissão e atualização da declaração mensal de rendimentos. Atualmente o utilizador pode gerar esta declaração diretamente a partir da aplicação ERP ARTSOFT. Contudo, para submeter ou atualizara mesma tem de utilizar a plataforma online da Segurança Social.
+Outra funcionalidade oferecida pelo \textit{web service} da Segurança Social é a submissão e atualização da declaração mensal de rendimentos. Atualmente o utilizador pode gerar esta declaração diretamente a partir da aplicação ERP ARTSOFT. Contudo, para submeter ou atualizar a mesma tem de utilizar a plataforma online da Segurança Social.
 
 O \textit{web service} dos Fundos de Compensação oferece três diferentes serviços, sendo os três relacionados com o contrato de um trabalhador, ao permitir reportar a admissão de um novo trabalhador, o terminar de contrato de um trabalhador e a atualização dos dados de um contrato. Estas três funcionalidades têm o mesmo objetivo, tal como o \textit{web service} da Segurança Social - poupar tempo ao utilizador.
 
@@ -87,7 +87,7 @@ O ERP ARTSOFT suporta vários tipos de entradas para suportar a organização do
 \begin{itemize}
   \item Diários: é uma coleção de registos de conta que refletem a organização dos documentos contabilísticos da empresa;
   \item Contas: pode ser representada por uma coleção de documentos, sendo os mesmos associados a um tipo específico de documento;
-  \item Documentos: em termos simplisticos, um documento representa uma fatura. Dado um tipo de documento o mesmo é automaticamente associado com diário ou uma conta específica.
+  \item Documentos: em termos simplísticos, um documento representa uma fatura. Dado um tipo de documento, o mesmo é automaticamente associado com diário ou uma conta específica.
 \end{itemize}
 
 \subsection{Formação}
@@ -111,26 +111,27 @@ A resolução deste evento foi muito importante na formação sobre o ERP ARTSOF
 
 \section{Trabalho Relacionado} \label{sec:relatedwork}
 
-\textit{Web services} é um tema já muito explorado na área de engenharia de \textit{software} devido à sua constante evolução, existindo vários artigos que propõem e exploram dife-rentes metodologias e técnicas de implementação.
+\textit{Web services} é um tema já muito explorado na área de enge-nharia de \textit{software} devido à sua constante evolução, existindo vários artigos que propõem e exploram diferentes metodologias e técnicas de implementação.
 
 %Previous work with same data, similar work with other data, ... \\
 
 %Problems tackled, data science approaches used, pros and cons, ... \\ 
 
-O artigo \textit{"Web Services Implementation Methodology for SOA Application"}\cite{SOAA} defende que as atuais metodologias utilizadas para o desenvolvimento de aplicações que integram \textit{web services} no seu funcionamento não se revelam suficientes. As principais dificuldades  destacadas são:
+O artigo de Lee \textit{et al.}\cite{SOAA} defende que as atuais metodologias utilizadas para o desenvolvimento de aplicações que integram \textit{web services} no seu funcionamento não se revelam suficientes. As principais dificuldades  destacadas são:
 \begin{itemize}
   \item A dificuldade em determinar todos os requisitos da aplicação dado que os requisitos não provêm de uma só fonte e
   \item A implementação do consumo e comunicação do servi-ço pois diferentes sistemas utilizam diferentes \textit{interfaces} e métodos de interação.
 \end{itemize}
-  A solução proposta é a integração na metodologia \textit{Agile} das melhores práticas no desenvolvimento de \textit{web services}, contudo os autores não apresentam resultados que suportem a eficacia da sua solução.
+
+A solução proposta é a integração na metodologia \textit{Agile} das melhores práticas no desenvolvimento de \textit{web services}. Contudo, os autores não apresentam resultados que suportem a eficácia da sua solução.
 
 \textit{Middlewares} foram criados com o propósito de permitir a comunicação entre diferentes sistemas independentemente da implementação ou \textit{hardware} que utilizem. Contudo, com o aumento da complexidade de \textit{middlewares}, o problema pque levou à sua criação voltou a surgir, criando uma necessidade de \textit{"middleware for middleware"}\cite{vinoskiMiddleware}. \textit{Web services} tentam resolver este problema mas, ao focarem as implementações no uso de SOAP API, os programadores destas soluções estão a ficar aquém do potencial de \textit{web services}. SOAP API não segue um padrão universal, ou seja, diferentes aplicações têm diferentes implementações da mesma. Este é o problema apresentado no artigo de Vinoski, S.\cite{vinoskiIntegration}, que expõe e explica em detalhe um dos problemas que \textit{web services} enfrentam. O autor desenvolve o tema apresentando várias soluções, em particular, uma solução em desenvolvimento por uma equipa de engenheiros da \textit{Sun Microsystems} com o nome \textit{Web Services Invocation Framework} (WSIF). Esta solução abstrai o protocolo de comunicação, permitindo aplicações seguirem só um padrão de comunicação, independente do protocolo utilizado pelo \textit{web service}. Segundo o autor, esta solução resolve vários dos problemas atuais de \textit{web services} mas é longe de ser perfeita sendo exclusiva a soluções que utilizem Java.
 
 \section{Contexto} \label{sec:data}
 
-Para a realização deste projeto é necessário o estudo extensivo da documentação dos \textit{web services} disponibilizados pela Segurança Social e pelos Fundos de Compensação. Ambos os serviços utilizam HTTPS, efetuando os seus pedidos em formato SOAP XML, um formato muito comum devido à sua versatilidade, e ambos usam o mesmo fluxo inicial para efetuar a autenticação com o esquema \textit{HTTP Basic Auth} com a concatenação, codificada em Base64, do nome de utilizador com a \textit{password}. Após uma autenticação com sucesso é possível começar a efetuar chamadas ao serviço.
+Para a realização deste projeto é necessário o estudo extensivo da documentação dos \textit{web services} disponibilizados pela Segurança Social e pelos Fundos de Compensação. Ambos os serviços utilizam HTTPS, efetuando os seus pedidos em formato SOAP XML, um formato muito comum devido à sua versatilidade, e ambos usam o mesmo fluxo inicial para efetuar a autenticação com o esquema \textit{HTTP Basic Auth} com a concatenação, codificada em Base64, do nome de utilizador com a \textit{password}. Após uma autenticação com sucesso, é possível começar a efetuar chamadas ao serviço.
 
-Porque seguem o mesmo fluxo - envio de pedido, receção de resposta - analisam-se ao detalhe somente três serviços: um serviço dos Fundos de Compensação e dois serviços da Segurança Social. Na imagem abaixo encontra-se representado o fluxo de qualquer serviço fornecido pelo \textit{web services} da Segurança Social ou Fundos de Compensação.
+Na imagem abaixo encontra-se representado o fluxo de qualquer serviço fornecido pelo \textit{web services} da Segurança Social ou Fundos de Compensação.
 \FloatBarrier
 \begin{figure}[htbp]
 	\centerline{\includegraphics[width=\linewidth]{figures/fluxo_servicos.png}}
@@ -138,6 +139,7 @@ Porque seguem o mesmo fluxo - envio de pedido, receção de resposta - analisam-
 	\label{fig3}
 \end{figure}
 \FloatBarrier
+Porque seguem o mesmo fluxo - envio de pedido, receção de resposta - analisam-se ao detalhe somente três serviços: um serviço dos Fundos de Compensação e dois serviços da Segurança Social.
 
 \subsection{Fundos de Compensação}
 
@@ -148,7 +150,7 @@ O \textit{web service} dos Fundos de Compensação oferece três diferentes serv
   \item A data de início de contrato;
   \item A retribuição base do trabalhador.
 \end{itemize}
-Existem ainda mais dois parâmetros possíveis de enviar no corpo da mensagem - a data de fim de contrato, sendo este campo obrigatório no caso de um contrato a termo, e as diuturnidades do contrato. O número de identificação da Segurança Social têm de ser um número com onze dígitos e têm de se encontrar válido na Segurança Social; a modalidade do contrato têm de corresponder a um valor pertencente à tabela fornecida na documentação, sendo um valor alfabético de A a S; as datas de início e fim de contrato têm de obedecer ao formato AAAA-MM-DD sendo a data mínima 2013-10-01; por fim, a retribuição base e diuturnidades são ambas representadas por um número com oito dígitos onde dois deles representam casas decimais. Depois de submetido o pedido, podem vir dois tipos de respostas; no caso de sucesso, no corpo da mensagem é enviado o número identificador do contrato; no caso de insucesso, no corpo da mensagem é enviado um código de erro cujo valor se encontra presente numa tabela da documentação com uma mensagem de erro descritiva associada.
+Existem ainda mais dois parâmetros possíveis de enviar no corpo da mensagem - a data de fim de contrato, sendo este campo obrigatório no caso de um contrato a termo, e as diuturnidades do contrato. O número de identificação da Segurança Social tem de ser um número com onze dígitos e tem de se encontrar válido na Segurança Social; a modalidade do contrato tem de corresponder a um valor pertencente à tabela fornecida na documentação, sendo um valor alfabético de A a S; as datas de início e fim de contrato têm de obedecer ao formato AAAA-MM-DD sendo a data mínima 2013-10-01; por fim, a retribuição base e diuturnidades são ambas representadas por um número com oito dígitos onde dois deles representam casas decimais. Depois de submetido o pedido, podem vir dois tipos de respostas; no caso de sucesso, no corpo da mensagem é enviado o número identificador do contrato; no caso de insucesso, no corpo da mensagem é enviado um código de erro cujo valor se encontra presente numa tabela da documentação com uma mensagem descritiva associada.
 
 \subsection{Segurança Social}
 
@@ -162,9 +164,9 @@ No caso do \textit{web service} disponibilizado pela Segurança Social, serão i
   \item Renumeração base;
   \item Local de trabalho.
 \end{itemize}
-Além destes, existem também os seguintes parâmetros opcionais: a data de fim de contrato, que é obrigatório no caso de o contrato ser a tempo certo ou de muita curta duração, as diuturnidades do contrato, a percentagem, horas e os dias de trabalho no caso de se referir a um contrato a tempo parcial, o motivo de contrato, se o contrato for a termo certo ou incerto, e o NISS do trabalhador a substituir. Muitos dos formatos de dados presentes no serviço dos Fundos de Compensação mantêm-se nos serviços da Segurança Social. O corpo de resposta do serviço de submissão do vínculo do trabalhador é sempre o mesmo independentemente do resultado; é enviado um código de mensagem, códigos definidos por uma tabela presente na documentação, e uma mensagem de erro descritiva caso tenha ocorrido uma falha.
+Além destes, existem também os seguintes parâmetros opcionais: a data de fim de contrato, que é obrigatório no caso de o contrato ser a tempo certo ou de muita curta duração, as diuturnidades do contrato, a percentagem, horas e dias de trabalho no caso de se referir a um contrato a tempo parcial, o motivo de contrato, se o contrato for a termo certo ou incerto, e o NISS do trabalhador a substituir. Muitos dos formatos de dados presentes no serviço dos Fundos de Compensação mantêm-se nos serviços da Segurança Social. O corpo de resposta do serviço de submissão do vínculo do trabalhador é sempre o mesmo independentemente do resultado; é enviado um código de mensagem, códigos definidos por uma tabela presente na documentação, e uma mensagem de erro descritiva caso tenha ocorrido uma falha.
 
-Em relação ao serviço de submissão da declaração mensal de renumerações à Segurança Social, para o envio da declaração mensal de renumerações é obrigatório enviar dois parâmetros no corpo da mensagem - um \textit{array} de bytes que representam o ficheiro a enviar, ficheiro este que se encontra num formato definido pela Segurança Social, e o nome de ficheiro que tem o limite máximo de vinte caracteres e algumas restrições na extensão do ficheiro a ser enviado. Caso a operação tenha tido sucesso, no corpo da mensagem é enviado o código de identificação do ficheiro submetido; em caso de insucesso, no corpo da resposta encontra-se um código de erro e uma mensagem descritiva do erro lançado.
+Em relação ao serviço de submissão da declaração mensal de renumerações à Segurança Social, é obrigatório enviar dois parâmetros no corpo da mensagem - um \textit{array} de \textit{bytes} que representam o ficheiro a enviar, ficheiro este que se encontra num formato definido pela Segurança Social, e o nome de ficheiro que tem o limite máximo de vinte caracteres e algumas restrições na extensão do ficheiro a ser enviado. Caso a operação tenha tido sucesso, no corpo da mensagem é enviado o código de identificação do ficheiro submetido; em caso de insucesso, no corpo da resposta encontra-se um código de erro e uma mensagem descritiva do erro lançado.
 
 \section{Metodologia} \label{sec:methods}
 
@@ -172,7 +174,7 @@ Como previamente referido, o objetivo deste projeto é a integração dos \texti
 
 \subsection{Especificação de Requisitos}
 
-Uma especificação de requisitos é um documento cujo objetivo é descrever todos as caracteristicas e comportamentos esperados e desejados de uma aplicação\cite{SRS}. Isto promove o desenvolvimento de um produto de qualidade de superior e que se aproxime o máximo possível das necessidades reais do cliente, para isso a nossa especificação de requisitos vai seguir o seguinte formato:
+Uma especificação de requisitos é um documento cujo objetivo é descrever todos as características e comportamentos esperados e desejados de uma aplicação\cite{SRS}. Isto promove o desenvolvimento de um produto de qualidade e que se aproxime o máximo possível das necessidades reais do cliente, para isso a nossa especificação de requisitos vai seguir o seguinte formato:
 \begin{enumerate}
   \item Introdução
   \item Sumário
@@ -183,12 +185,12 @@ Uma especificação de requisitos é um documento cujo objetivo é descrever tod
 \end{enumerate}
 Na introdução são apresentadas as necessidades do cliente de forma a contextualizar o problema, são indicados os módulos que vão ser afetados pelo desenvolvimento e por fim é apresentado o coordenador e programador do projeto, os membros da equipa de teste, o custo estimado e uma estimativa do tempo que irá demorar a desenvolver a solução e a sua margem de erro.
 
-No sumário são resumido em termos técnicos as necessidades do desenvolvimento e as funcionalidades chave a implementar. Na secção dos requisitos são descritos em detalhe, individualmente, os requisitos do desenvolvimento. A estes requisitos é também atribuído um grau de importância, por exemplo, se um requisito criar a necessidade de implementar uma nova \textit{interface}, isso é explicado em detalhe sendo apresentado um esboço da \textit{interface} a ser desenvolvida e uma descrição das funcionalidades de todos os botões e campos interativos. No contexto da aplicação ERP ARTSOFT, esta secção contém mais um campo referente a possíveis esboços de relatórios novos a integrar na aplicação. No segmento da informação adicional, como o nome indica, são indicados quaisquer pressupostos e informação adicional que seja relevante para o desenvolvimento. De seguida são apresentados todos os documentos de referência e o glossário, concluindo o documento com a lista de testes aos quais o produto vai ser submetido. No contexto do desenvolvimento a ser realizado neste projeto, foram definidos sete requisitos funcionais:
+No sumário são resumidos em termos técnicos as necessidades do desenvolvimento e as funcionalidades chave a implementar. Na secção dos requisitos são descritos em detalhe, individualmente, os requisitos do desenvolvimento. A estes requisitos é também atribuído um grau de importância - por exemplo, se um requisito criar a necessidade de implementar uma nova \textit{interface}, isso é explicado em detalhe sendo apresentado um esboço da \textit{interface} a ser desenvolvida e uma descrição das funcionalidades de todos os botões e campos interativos. No contexto da aplicação ERP ARTSOFT, esta secção contém mais um campo referente a possíveis esboços de relatórios novos a integrar na aplicação. No segmento da informação adicional, como o nome indica, são indicados quaisquer pressupostos e informação adicional que seja relevante para o desenvolvimento. De seguida são apresentados todos os documentos de referência e o glossário, concluindo o documento com a lista de testes aos quais o produto vai ser submetido. No contexto do desenvolvimento a ser realizado neste projeto, foram definidos sete requisitos funcionais:
 \begin{enumerate}
   \item Registo do vínculo de trabalhador na Segurança Social;
   \item Submissão da declaração mensal de renumerações à Segurança Social;
   \item Alteração da declaração mensal de renumerações à Segurança Social;
-  \item Obtenção de estado de declarações mensais de renumerações previamente entregues à Segurança Social;
+  \item Obtenção do estado de declarações mensais de renumerações previamente entregues à Segurança Social;
   \item Registo da admissão de trabalhador aos Fundos de Compensação;
   \item Alteração dos termos de contrato de um trabalhador aos Fundos de Compensação;
   \item Reportar o fim de contrato de um trabalhador aos Fundos de Compensação.
@@ -211,14 +213,14 @@ Para este desenvolvimento vai ser utilizada uma metodologia \textit{Agile} que p
 
 Para concluir o desenvolvimento, serão efetuados testes funcionais para verificar que os requisitos se encontram satisfeitos. Estes testes são efetuados de duas maneiras diferentes:
 \begin{itemize}
-  \item Testes manuais a serem realizados pelo programador responsável pelo desenvolvimento e por membros da equipa de qualidade de \textit{software}, sendo que estes envolvem o teste do cumprimento dos requisitos quer seja em casos de sucesso como em casos de erro;
+  \item Testes manuais a serem realizados pelo programador responsável pelo desenvolvimento e por membros da equipa de qualidade de \textit{software}, sendo que estes envolvem o teste do cumprimento dos requisitos quer seja em casos de sucesso quer em casos de erro;
   \item Testes automatizados utilizando \textit{scripts} escritos por membros da equipa de qualidade de \textit{software}, que têm o objetivo de simular a atividade de um utilizador ao utilizar a aplicação.
 \end{itemize}
 Estes \textit{scripts} têm o propósito e a capacidade de identificar se os resultados de utilização correspondem ao esperado e se a \textit{interface} também se comporta como documentado.
 
 \section{Trabalho Futuro} \label{sec:forthcomingwork}
 
-O passo seguinte a realizar no projeto será a realização de uma reunião para apresentar e aprovar a especificação de requisitos. Dada a aprovação, utilizando uma metodologia Agile, serão definidos vários Sprints quinzenais com diferentes objetivos, realizando os testes acima descritos no fim de cada Sprint. Estas novas funcionalidades irão ser incluídas na nova versão da aplicação ERP ARTSOFT.
+O passo seguinte a realizar no projeto será a realização de uma reunião para apresentar e aprovar a especificação de requisitos. Dada a aprovação, utilizando uma metodologia Agile, serão definidos vários \textit{Sprints} quinzenais com dife-rentes objetivos, realizando os testes acima descritos no fim de cada \textit{Sprint}. Estas novas funcionalidades irão ser incluídas na nova versão da aplicação ERP ARTSOFT.
 
 %%
 %% The next two lines define the bibliography style to be used, and
