@@ -1,0 +1,17 @@
+"começaria por dizer na análise do problema o k ja existe, a framework k existe. no 3 começar por dizer quais sao os problemas e a solução passa por extender algo k ja existe."
+
+"falta a WSRequest no diagrama"
+"object oriented é como tu analisaste e desenhaste o problema"
+"desenvolvimento iterativo"
+"ha 1 desenvolvimento iterativo, ent ja tenho 1 diagrama de classes ent vou passar a 1 passo iterativo para desenvolver este problema. isto vai implicar uma nova analise do k tenho de novo. ha conceitos k ja foram identificados e outros k nao. vamos começar pelo diagrama de dominio, pk o de classes e no fim do desenho."
+
+"começaria pela parte da analise, descrevo o k ha, tendo em conta o k ha o k vou querer criar e como se relacionam."
+
+"o uml nao e metodologia e 1 linguagem"
+
+"esta tudo mt junto, pouco separado, pouca estrutura"
+
+"o k é suposto fazer, a analise conceitos k existem e k interessam. uma parte de analise, nao estejas tao agarrado ao documento. 1 uma parte de analise, depois ao desenho e por fim a implementacao"
+
+trabalho relacionado:
+- listar boas praticas (padroes) e depois demonstrar como foram "implementados" no projeto

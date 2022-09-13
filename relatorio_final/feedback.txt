@@ -1,0 +1,24 @@
+tese:
+limpar texto, bullets?
+texto mt confuso
+
+(subseccao) na introducao a falar mais sobre a empresa, fui introduzido aonde? se isto e projeto normal?
+
+contribuicao e o k o trabalho k fiz contribui para o produto.
+
+trabalho relacionado:
+tecnologias utilizadas;
+segurança;
+web services;
+
+especificação:
+diagrama de interação
+alterar nome da seccao para análise do problema?
+especificação: o k quero
+análise: notas do k precisas
+desenho: as entidades k vou trabalhar
+definir requisitos, alterar texto para focar nos requisitos
+
+adicionar análise e desenho!!!
+
+apresentar tudo k existe, para na implementação nada ser novo

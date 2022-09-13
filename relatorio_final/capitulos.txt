@@ -1,0 +1,13 @@
+Introdução: Apresentar e contextualizar a tese e o problema a tratar. Apresentar a empresa e aonde o aluno vai ser inserido. Indicar os objetivos da tese e a estrutura da mesma.
+
+Trabalho Relacionado: Apresentar conceitos relevantes para a compreenção da tese. Adicionalmente introduzir diferentes padrões relevantes para a tese.
+
+Análise: Localizar e descrever os diferentes modulos e sistemas (conceitos) que existem relevantes para o desenvolvimento.
+
+Desenho: Identificar conceitos ainda não presentes no sistema e que tem de ser criados para o desenvolvimento. Concluir com um diagrama de classes.
+
+Implementação: Detalhar a implementação realizada.
+
+Resultados: Apresentar a solução desenvolvida.
+
+Conclusão: Relembrar o propósito da tese e os objetivos da mesma. Descrever se os mesmos foram atingidos e pontos relevantes sobre a implementação.
